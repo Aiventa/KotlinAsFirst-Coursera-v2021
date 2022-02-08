@@ -55,6 +55,14 @@ fun quadraticRootProduct(a: Double, b: Double, c: Double): Double {
 fun main() {
     val x1x2 = quadraticRootProduct(1.0, 13.0, 42.0)
     println("Root product: $x1x2")
+    println()
+    val task1 = seconds(8, 20, 35)
+    println("Задача 1: Прошло $task1 от начала суток!")
+    println()
+    val task2 = lengthInMeters(8, 2, 11)
+    println("Задача 2: Длина отрезка $task2 метров!")
+    println()
+
 }
 
 /**
@@ -65,8 +73,11 @@ fun main() {
  * Пользователь задает время в часах, минутах и секундах, например, 8:20:35.
  * Рассчитать время в секундах, прошедшее с начала суток (30035 в данном случае).
  */
-fun seconds(hours: Int, minutes: Int, seconds: Int): Int = TODO()
-// 35+20*60+8*60*60
+fun seconds(hours: Int, minutes: Int, seconds: Int): Int {
+    var h = 60 * 60
+    var m = 60
+    return hours * h + minutes * m + seconds
+}
 
 /**
  * Тривиальная (1 балл)
@@ -75,7 +86,12 @@ fun seconds(hours: Int, minutes: Int, seconds: Int): Int = TODO()
  * Определить длину того же отрезка в метрах (в данном случае 18.98).
  * 1 сажень = 3 аршина = 48 вершков, 1 вершок = 4.445 см.
  */
-fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int): Double = TODO()
+fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int): Double {
+    val ver = 4.445
+    val ars = (48 / 3) * 4.445
+    val sag = 48 * 4.445
+    return (sagenes * sag + arshins * ars + vershoks * ver) / 100
+}
 
 /**
  * Тривиальная (1 балл)
