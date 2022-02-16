@@ -62,13 +62,30 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
     return -sqrt(y3)           // 7
 }
 
+fun main() {
+    println(ageDescription(12))
+}
+
 /**
  * Простая (2 балла)
  *
  * Мой возраст. Для заданного 0 < n < 200, рассматриваемого как возраст человека,
  * вернуть строку вида: «21 год», «32 года», «12 лет».
  */
-fun ageDescription(age: Int): String = TODO()
+fun ageDescription(age: Int): String = when {
+    age in 5..20 || age in 105..120 -> "$age лет"
+    age % 10 == 1 -> "$age год"
+    age % 10 == 2 -> "$age года"
+    age % 10 == 3 -> "$age года"
+    age % 10 == 4 -> "$age года"
+    age % 10 == 5 -> "$age лет"
+    age % 10 == 6 -> "$age лет"
+    age % 10 == 7 -> "$age лет"
+    age % 10 == 8 -> "$age лет"
+    age % 10 == 9 -> "$age лет"
+    age % 10 == 0 -> "$age лет"
+    else -> "столько люди не живут;)"
+}
 
 /**
  * Простая (2 балла)
@@ -81,7 +98,18 @@ fun timeForHalfWay(
     t1: Double, v1: Double,
     t2: Double, v2: Double,
     t3: Double, v3: Double
-): Double = TODO()
+): Double {
+    val l1 = t1 * v1
+    val l2 = t2 * v2
+    val l3 = t3 * v3
+    val l = l1 + l2 + l3
+    val x = l / 2
+    val r1 = (l1-(l1 - x)) / v1 //потрачено времени на путь, за счет вычета пройденного расстояния равного "х"
+    val r2 = t1 + (l2 - (l1 + l2 - x)) / v2
+    val r3 = t1 + t2 + (l3 - (l1 + l2 + l3 - x)) / v3
+    return if (x <= l1) r1 else
+        if (x <= l1 + l2) r2 else r3
+}
 
 /**
  * Простая (2 балла)
